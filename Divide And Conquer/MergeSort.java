@@ -10,7 +10,7 @@ public class MergeSort {
             return;
         }
         int mid = start + (end - start)/2;   // Mid nikalne ka optimised treeka hai bhai dekhlio
-        // Hai yeh bhi (start + end)/2 or kuch nahi chahe toh simplefy krke dekhle
+        // Hai yeh hi (start + end)/2 or kuch nahi chahe toh simplify krke dekhle
         mergeSort(arr, start, mid);
         mergeSort(arr, mid+1, end);
         merge(arr, start, mid, end);
