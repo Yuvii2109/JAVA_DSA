@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class MostFrequentNumberFollowingKey {
     public static int mostFrequentNumberFollowingKey(ArrayList<Integer> nums, int key){
-        int[]result = new int[1000]; // This array is used to count occurrences 
+        int[] result = new int[1000]; // This array is used to count occurrences 
         // of numbers following the key, result[i] will store the frequency
         // of the number i+1 appearing immediately after key.
 
