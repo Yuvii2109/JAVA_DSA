@@ -70,7 +70,7 @@ public class RootToLeafPaths {
 
     Backtrack to 5 (path becomes [8, 5]).
     Traverse right to 6, add it - [8, 5, 6].
-    Leaf Node: Print [8, 5, 6].
+    Leaf Node - Print [8, 5, 6].
 
     Backtrack to 8 (path becomes [8]).
     Traverse right to 10, add it - [8, 10].
