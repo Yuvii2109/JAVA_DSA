@@ -70,7 +70,7 @@ public class MaxSumBSTInBT {
          *        /       \
          *       6         3
          *      / \
-         *     8   7 
+         *     8   7  
          */
         Node root = new Node(5);
         root.left = new Node(9);

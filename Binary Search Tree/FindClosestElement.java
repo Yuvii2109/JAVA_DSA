@@ -50,7 +50,7 @@ public class FindClosestElement {
 
     public static void main(String[] args) {
         int[] value = {8, 5, 3, 1, 4, 6, 10, 11, 14};
-        /*
+        /* 
          *  BST - 
          *               8
          *             /   \

@@ -11,7 +11,7 @@ public class KthSmallestElement {
             this.left = null;
             this.right = null;
         }
-    }
+    } 
 
     public static Node insert(Node root, int value) {
         if (root == null) {

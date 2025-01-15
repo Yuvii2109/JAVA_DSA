@@ -6,7 +6,7 @@
 // where node1 is from the first BST, node2 is from the second BST, and 
 // their sum equals x.
 
-import java.util.*;
+import java.util.*; 
 
 public class TwoSumsBSTs {
     // Node class for the BST

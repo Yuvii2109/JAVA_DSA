@@ -69,4 +69,4 @@ public class SumInRange {
         int R = 12;
         System.out.println("Sum of the range [" + L + ", " + R + "] - " + sumInRange(root, L, R));
     }
-}
+} 
