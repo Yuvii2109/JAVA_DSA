@@ -20,45 +20,76 @@
 //     e         r
 
 public class CreatingATrie {
-    public static class Node{
-        Node[] children = new Node[26]; // 26 letters in the English alphabet
-        boolean isEndOfWord = false;
-        public Node(){
-            for(int i=0; i<26; i++){
-                children[i] = null;
+    // Node class representing each node in the Trie
+    public static class Node {
+        Node[] children = new Node[26]; // Array to store children nodes for each letter ('a' to 'z')
+        boolean isEndOfWord = false; // Flag to mark the end of a word
+        
+        // Constructor to initialize children array
+        public Node() {
+            for (int i = 0; i < 26; i++) {
+                children[i] = null; // Initialize each child node as null
             }
         }
     }
+    
+    // Root of the Trie
     public static Node root = new Node();
-    public static void insert(String word){
-        Node current = root;
-        for(int i=0; i<word.length(); i++){
-            int index = word.charAt(i) - 'a'; // Convert char to index
-            if(current.children[index] == null){
+
+    // Method to insert a word into the Trie
+    public static void insert(String word) {
+        Node current = root; // Start from the root
+        
+        // Traverse each character of the word
+        for (int i = 0; i < word.length(); i++) {
+            int index = word.charAt(i) - 'a'; // Convert character to index (0-25)
+            
+            // If the current character's node doesn't exist, create a new node
+            if (current.children[index] == null) {
                 current.children[index] = new Node();
             }
+            
+            // Move to the next node
             current = current.children[index];
         }
+        
+        // Mark the end of the word
         current.isEndOfWord = true;
     }
-    public static boolean search(String key){
-        Node current = root;
-        for(int i=0; i<key.length(); i++){
-            int index = key.charAt(i) - 'a'; // Convert char to index
-            if(current.children[index] == null){
+
+    // Method to search for a word in the Trie
+    public static boolean search(String key) {
+        Node current = root; // Start from the root
+        
+        // Traverse each character of the key
+        for (int i = 0; i < key.length(); i++) {
+            int index = key.charAt(i) - 'a'; // Convert character to index (0-25)
+            
+            // If the current character's node doesn't exist, the word doesn't exist in the Trie
+            if (current.children[index] == null) {
                 return false;
             }
+            
+            // Move to the next node
             current = current.children[index];
         }
+        
+        // Check if the end of the word is reached
         return current.isEndOfWord;
     }
+
+    // Main method to demonstrate Trie operations
     public static void main(String[] args) {
         String words[] = {"the", "a", "there", "their", "any", "thee"};
-        for(String word : words){
+        
+        // Insert each word into the Trie
+        for (String word : words) {
             insert(word);
         }
-        System.out.println(search("the"));  // true
-        System.out.println(search("thee")); // true
-        System.out.println(search("th")); // false
+        
+        // Perform searches and print results
+        System.out.println(search("the"));   // true
+        System.out.println(search("thee"));  // true
+        System.out.println(search("th"));    // false
     }
 }
