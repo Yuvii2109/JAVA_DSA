@@ -29,7 +29,36 @@ public class CreatingATrie {
             }
         }
     }
+    public static Node root = new Node();
+    public static void insert(String word){
+        Node current = root;
+        for(int i=0; i<word.length(); i++){
+            int index = word.charAt(i) - 'a'; // Convert char to index
+            if(current.children[index] == null){
+                current.children[index] = new Node();
+            }
+            current = current.children[index];
+        }
+        current.isEndOfWord = true;
+    }
+    public static boolean search(String key){
+        Node current = root;
+        for(int i=0; i<key.length(); i++){
+            int index = key.charAt(i) - 'a'; // Convert char to index
+            if(current.children[index] == null){
+                return false;
+            }
+            current = current.children[index];
+        }
+        return current.isEndOfWord;
+    }
     public static void main(String[] args) {
         String words[] = {"the", "a", "there", "their", "any", "thee"};
+        for(String word : words){
+            insert(word);
+        }
+        System.out.println(search("the"));  // true
+        System.out.println(search("thee")); // true
+        System.out.println(search("th")); // false
     }
 }
