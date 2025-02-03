@@ -53,12 +53,21 @@ public class DFSTraversal {
         // Vertex - 6
         graph[6].add(new Edge(6, 5, 1));
     }
-    public static void DFS(ArrayList<Edge>[] graph, int current, boolean visited[]){
+    public static void DFS(ArrayList<Edge>[] graph){
+        int vertices = graph.length;
+        boolean[] visited = new boolean[vertices];
+        for(int i = 0; i < vertices; i++){
+            if(!visited[i]){
+                DFSUtil(graph, i, visited);
+            }
+        }
+    }
+    public static void DFSUtil(ArrayList<Edge>[] graph, int current, boolean visited[]){
         System.out.print(current + " ");
         visited[current] = true;
         for(Edge edge : graph[current]){
             if(!visited[edge.destination]){
-                DFS(graph, edge.destination, visited);
+                DFSUtil(graph, edge.destination, visited);
             }
         }
         // It starts from a given vertex current. Prints the current vertex. Marks the current vertex as visited (visited[current] = true). Recursively visits all adjacent vertices (destinations of edges from current) that haven't been visited yet.
@@ -70,7 +79,7 @@ public class DFSTraversal {
         createGraph(graph);
         boolean visited[] = new boolean[vertices];
         System.out.print("DFS - ");
-        DFS(graph, 0, visited);
+        DFS(graph);
     }
 }
 

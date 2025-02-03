@@ -55,11 +55,17 @@ public class BFSTraversal {
         // Vertex - 6
         graph[6].add(new Edge(6, 5, 1));
     }
-    public static void BFS(ArrayList<Edge>[] graph) { // O(V+E)
+    public static void BFS(ArrayList<Edge>[] graph){
         int V = graph.length; // Number of vertices
-        boolean visited[] = new boolean[V]; // Array to track visited vertices
+        boolean[] visited = new boolean[V]; // Array to track visited vertices
+        for(int i = 0; i < V; i++){
+            if(!visited[i]){
+                BFSUtil(graph, visited, i);
+            }
+        }
+    }
+    public static void BFSUtil(ArrayList<Edge>[] graph, boolean[] visited, int i){ // O(V+E)
         Queue<Integer> q = new LinkedList<>(); // Queue for BFS traversal
-    
         q.add(0); // Start BFS from vertex 0
         while(!q.isEmpty()) {
             int current = q.poll(); // Dequeue vertex from front of queue
@@ -67,9 +73,8 @@ public class BFSTraversal {
                 System.out.print(current + " "); // Print current vertex
                 visited[current] = true; // Mark current vertex as visited
                 // Traverse all adjacent vertices of current vertex
-                for(int i = 0; i < graph[current].size(); i++) {
-                    Edge e = graph[current].get(i); // Get edge object
-                    if(!visited[e.destination]) {
+                for (Edge e : graph[current]) {
+                    if (!visited[e.destination]) {
                         q.add(e.destination); // Enqueue adjacent vertex if not visited
                     }
                 }
