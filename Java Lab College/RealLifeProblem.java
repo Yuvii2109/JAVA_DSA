@@ -80,7 +80,7 @@ public class RealLifeProblem {
     }
 
     // BalanceCalculator Class
-    class BalanceCalculator{
+    class BalanceCalculator{ 
         public static double calculateBalance(double amountPaid, double totalCartAmount) {
             return amountPaid - totalCartAmount;
         }
