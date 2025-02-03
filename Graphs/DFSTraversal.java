@@ -81,7 +81,7 @@ public class DFSTraversal {
         System.out.print("DFS - ");
         DFS(graph);
     }
-}
+} 
 
 /*
     Initial State - 
