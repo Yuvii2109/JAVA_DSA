@@ -98,7 +98,7 @@ public class DijkstrasAlgorithm {
                     int neighbor = e.destination;
                     int weight = e.weight;
                     if(!visited[neighbor] && pathLength[neighbor] > pathLength[u] + weight){
-                        // If current known shortest path (pathLength[v]) is greater than the new possible shorter path (pathLength[u] + weight), then - Update pathLength[v] to the new, shorter distance. Push v into the priority queue with its updated distance.
+                        // If current known shortest path (pathLength[neighbor]) is greater than the new possible shorter path (pathLength[u] + weight), then - Update pathLength[neighbor] to the new, shorter distance. Push neighbor into the priority queue with its updated distance.
                         pathLength[neighbor] = pathLength[u] + weight;
                         pq.add(new Pairs(neighbor, pathLength[neighbor]));
                     }
