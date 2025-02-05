@@ -94,13 +94,13 @@ public class DijkstrasAlgorithm {
 
             if(!visited[u]){ //Because once a vertex is visited, its shortest distance is finalized, and processing it again is unnecessary.
                 visited[u] = true; // Indicating the shortest path to u has been confirmed and won't be processed again
-                for(Edge neighbor : graph[u]){
-                    int v = neighbor.destination;
-                    int weight = neighbor.weight;
-                    if(!visited[v] && pathLength[v] > pathLength[u] + weight){
+                for(Edge e : graph[u]){
+                    int neighbor = e.destination;
+                    int weight = e.weight;
+                    if(!visited[neighbor] && pathLength[neighbor] > pathLength[u] + weight){
                         // If current known shortest path (pathLength[v]) is greater than the new possible shorter path (pathLength[u] + weight), then - Update pathLength[v] to the new, shorter distance. Push v into the priority queue with its updated distance.
-                        pathLength[v] = pathLength[u] + weight;
-                        pq.add(new Pairs(v, pathLength[v]));
+                        pathLength[neighbor] = pathLength[u] + weight;
+                        pq.add(new Pairs(neighbor, pathLength[neighbor]));
                     }
                 }
             }
