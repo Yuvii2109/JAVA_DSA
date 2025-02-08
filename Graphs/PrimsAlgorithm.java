@@ -120,3 +120,5 @@ public class PrimsAlgorithm {
         prims(graph);
     }
 }
+
+// Time complexity - O(E*logV)
