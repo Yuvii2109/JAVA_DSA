@@ -44,8 +44,8 @@ public class KruskalsAlgorithm {
             parent[y] = x;
         }else{
             parent[y] = x;
+            rank[x]++; // Should be incremented only when both the sets have the same rank
         }
-        rank[x]++;
     }
     public static void kruskalsAlgorithm(ArrayList<Edge> edges, int V){
         makeSet();
