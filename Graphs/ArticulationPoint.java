@@ -65,8 +65,9 @@ public class ArticulationPoint {
      * discoveryTime - Array to store the discovery times of vertices.
      * lowestDiscoveryTime - Array to store the lowest discovery time reachable from the vertex.
      * time - Mutable time counter (as an array of size 1) used to assign discovery times.
+     * isArticulationPoint - Array to track whether a vertex is an articulation point or not. To avoid the chances of reprint in big graphs
      */
-    public static void dfs(List<List<Edge>> graph, int current, int parent, boolean[] visited, int[] discoveryTime, int[] lowestDiscoveryTime, int[] time) {
+    public static void dfs(List<List<Edge>> graph, int current, int parent, boolean[] visited, int[] discoveryTime, int[] lowestDiscoveryTime, int[] time, boolean[] articulationPoint) {
         // Mark the current vertex as visited.
         visited[current] = true;
         // Increase the global time counter and assign the discovery time and lowest reachable time.
@@ -90,7 +91,7 @@ public class ArticulationPoint {
                 lowestDiscoveryTime[current] = Math.min(lowestDiscoveryTime[current], discoveryTime[neighbor]);
             } else {
                 // If the neighbor is not visited, perform DFS recursively.
-                dfs(graph, neighbor, current, visited, discoveryTime, lowestDiscoveryTime, time);
+                dfs(graph, neighbor, current, visited, discoveryTime, lowestDiscoveryTime, time, articulationPoint);
                 childCount++; // Increment the child count for the current vertex.
 
                 // After returning from DFS, update the lowest discovery time for the current vertex.
@@ -103,7 +104,7 @@ public class ArticulationPoint {
                       is greater than or equal to the discovery time of the current vertex.
                 */
                 if ((parent == -1 && childCount > 1) || (parent != -1 && lowestDiscoveryTime[neighbor] >= discoveryTime[current])) {
-                    System.out.println("Articulation point - " + current);
+                    articulationPoint[current] = true; // Mark the articulation point
                 }
             }
         }
@@ -121,6 +122,7 @@ public class ArticulationPoint {
         int[] lowestDiscoveryTime = new int[V];
         // Array to keep track of visited vertices.
         boolean[] visited = new boolean[V];
+        boolean[] articulationPoint = new boolean[V]; // New array to track articulation points
 
         // Using an array of one element to have a mutable time counter across recursive calls.
         int[] time = new int[1]; // Initially, time[0] = 0
@@ -128,7 +130,14 @@ public class ArticulationPoint {
         // Start DFS from each unvisited vertex (covers disconnected graphs, if any).
         for (int i = 0; i < V; i++) {
             if (!visited[i]) {
-                dfs(graph, i, -1, visited, discoveryTime, lowestDiscoveryTime, time);
+                dfs(graph, i, -1, visited, discoveryTime, lowestDiscoveryTime, time, articulationPoint);
+            }
+        }
+        // Print articulation points from the array
+        System.out.println("Articulation points in the graph - ");
+        for (int i = 0; i < V; i++) {
+            if (articulationPoint[i]) {
+                System.out.println("Point - " + i);
             }
         }
     }
