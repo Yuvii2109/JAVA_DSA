@@ -39,8 +39,8 @@ public class ValidAnagram {
         }
         int count[] = new int[26];
         for(int i = 0; i < s.length(); i++){
-            count[s.toLowerCase().charAt(i) - 'a']++;
-            count[t.toLowerCase().charAt(i) - 'a']--;
+            count[s.charAt(i) - 'a']++;
+            count[t.charAt(i) - 'a']--;
         }
         for(int c : count){
             if(c != 0){
