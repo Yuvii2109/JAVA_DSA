@@ -59,5 +59,7 @@ public class CatalansNumber {
         int dp[] = new int[n+1];
         Arrays.fill(dp, -1);
         System.out.println("Catalan number for n = " + n + " is " + catalanMemoization(n, dp) + " - Memoization Appraoch");
+        System.out.println("Catalan number for n = " + n + " is " +
+        catalanTabulation(n) + " - Tabulation Approach");
     }
 }
