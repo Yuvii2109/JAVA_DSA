@@ -29,4 +29,4 @@ public class TribonacciSeries {
     public static void main(String[] args) {
         printTribonacci(5);
     }
-}
+} 
