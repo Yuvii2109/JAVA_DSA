@@ -10,7 +10,7 @@ public class RodCutting {
                 System.out.print(dp[i][j] + " ");
             }
             System.out.println();
-        }
+        } 
     }
     public static int rodCutting(int length[], int price[], int totalRod){
         int n = price.length;
